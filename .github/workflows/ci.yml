@@ -32,7 +32,7 @@ jobs:
 
     - name: Run tests
       env:
-        github.username: ${{ secrets.USERNAME }}
-        github.password: ${{ secrets.PASSWORD }}
+        GITHUB_USERNAME: ${{ secrets.USERNAME }}
+        GITHUB_PASSWORD: ${{ secrets.PASSWORD }}
         REQRES_API_KEY: ${{ secrets.REQRES }}
       run: ./gradlew test
