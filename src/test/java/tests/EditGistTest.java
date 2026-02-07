@@ -13,12 +13,12 @@ public class EditGistTest extends BaseTest {
     public void editExistingGist() {
         // Login
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(ConfigReader.get("github.username"), ConfigReader.get("github.password"));
+        loginPage.login(ConfigReader.get("GITHUB_USERNAME"), ConfigReader.get("GITHUB_PASSWORD"));
         System.out.println("Step: Login berhasil");
 
         // Edit gist langsung dari list
         GistPage gistPage = new GistPage(driver);
-        gistPage.editLatestGist("TestGist.java", "System.out.println(\"Edited\");", ConfigReader.get("github.username"));
+        gistPage.editLatestGist("TestGist.java", "System.out.println(\"Edited\");", ConfigReader.get("GITHUB_USERNAME"));
         System.out.println("Step: Gist berhasil diedit");
 
         // Assertion

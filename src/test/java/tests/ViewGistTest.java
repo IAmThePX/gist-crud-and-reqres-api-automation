@@ -13,12 +13,12 @@ public class ViewGistTest extends BaseTest {
     public void viewListOfGists() {
         // Login
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(ConfigReader.get("github.username"), ConfigReader.get("github.password"));
+        loginPage.login(ConfigReader.get("GITHUB_USERNAME"), ConfigReader.get("GITHUB_PASSWORD"));
         System.out.println("Step: Login berhasil");
 
         // View gist list
         GistListPage gistListPage = new GistListPage(driver);
-        String username = ConfigReader.get("github.username");
+        String username = ConfigReader.get("GITHUB_USERNAME");
         boolean gistFound = gistListPage.gistExists(username, "TestGist.java");
         System.out.println("Step: Halaman gist user terbuka");
 

@@ -13,7 +13,7 @@ public class CreateGistTest extends BaseTest {
     public void createPublicGist() {
         // Login
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(ConfigReader.get("github.username"), ConfigReader.get("github.password"));
+        loginPage.login(ConfigReader.get("GITHUB_USERNAME"), ConfigReader.get("GITHUB_PASSWORD"));
         System.out.println("Step: Login berhasil");
 
         // Create Gist

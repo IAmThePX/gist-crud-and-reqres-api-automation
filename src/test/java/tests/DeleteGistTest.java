@@ -14,11 +14,11 @@ public class DeleteGistTest extends BaseTest {
     @Test
     public void deleteExistingGist() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(ConfigReader.get("github.username"), ConfigReader.get("github.password"));
+        loginPage.login(ConfigReader.get("GITHUB_USERNAME"), ConfigReader.get("GITHUB_PASSWORD"));
         System.out.println("Step: Login berhasil");
 
         GistPage gistPage = new GistPage(driver);
-        gistPage.deleteLatestGist("TestGist.java", ConfigReader.get("github.username"));
+        gistPage.deleteLatestGist("TestGist.java", ConfigReader.get("GITHUB_USERNAME"));
         System.out.println("Step: Gist berhasil dihapus");
 
         // Assertion: gist sudah tidak ada di list
