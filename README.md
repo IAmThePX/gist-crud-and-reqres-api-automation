@@ -29,6 +29,16 @@ REQRES_API_KEY=reqres_xxxxx
 - atau klik kanan testng.xml → Run
 - atau klik kanan salah satu file test case → Run
 
+## Test Execution Order
+Urutan eksekusi suite sudah diatur di `testng.xml`:
+1. CreateGistTest → membuat gist baru
+2. ViewGistTest → memverifikasi gist muncul di halaman user
+3. EditGistTest → mengubah gist yang sudah dibuat
+4. DeleteGistTest → menghapus gist
+5. API Tests (Reqres) → GET, POST, PUT, DELETE user
+
+Dengan urutan ini, setiap test CRUD saling bergantung sehingga hasil lebih realistis.
+
 ## Screenshot Result in Selenium
 **Dengan ./gradlew test**
 <img width="1095" height="68" alt="Screenshot 2026-02-08 022453" src="https://github.com/user-attachments/assets/65ce9400-5ea4-4a3e-8e2d-9c2018357b80" />
