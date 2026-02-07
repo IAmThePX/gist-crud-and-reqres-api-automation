@@ -1,16 +1,16 @@
 package base;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.By;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,13 +21,15 @@ public class BaseTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
-    @Parameters("browser")
     @BeforeMethod
     public void setUp() {
-        // pilih browser: default Firefox
-        System.setProperty("webdriver.gecko.diver", System.getProperty("user.dir") + "/driver/geckodriver.exe");
-        driver = new FirefoxDriver();
-        driver.manage().window().maximize();
+        // ChromeOptions untuk headless mode di CI
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless=new"); // headless mode
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+
+        driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
@@ -47,7 +49,6 @@ public class BaseTest {
         }
     }
 
-    // helper method untuk menunggu elemen siap
     protected void waitAndClick(By locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
