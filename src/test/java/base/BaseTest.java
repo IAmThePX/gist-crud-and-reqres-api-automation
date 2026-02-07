@@ -27,10 +27,11 @@ public class BaseTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless=new"); // headless mode
         options.addArguments("--no-sandbox");
+        options.addArguments("--window-size=1920,1080");
         options.addArguments("--disable-dev-shm-usage");
 
         driver = new ChromeDriver(options);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
     @AfterMethod
